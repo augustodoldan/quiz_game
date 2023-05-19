@@ -1,6 +1,6 @@
 import 'package:quiz_new/models/quiz_question.dart';
 
-const questions = [
+final questions = [
   QuizQuestion('¿Cuál es la forma más rápida de convertirte en peronista?', [
     'Nacer en Argentina',
     'Leer un libro de historia',

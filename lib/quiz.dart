@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_new/models/questions_random.dart';
 import 'package:quiz_new/questions_screen.dart';
 import 'package:quiz_new/start_widget.dart';
 import 'package:quiz_new/data/questions.dart';
@@ -18,6 +19,7 @@ class _QuizState extends State<Quiz> {
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
+      randomQuestions = QuestionsRandom(questions).getShuffledQuestions();
       activeScreen = 'questions-screen';
     });
   }

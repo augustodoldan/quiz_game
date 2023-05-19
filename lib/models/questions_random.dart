@@ -1,13 +1,16 @@
+import 'package:quiz_new/models/quiz_question.dart';
+
 class QuestionsRandom {
-  const QuestionsRandom(this.text, this.answers);
+  const QuestionsRandom(this.questions);
 
-  final String text;
-  final List<String> answers;
+  final List<QuizQuestion> questions;
 
-  List<String> getShuffledAnswers() {
-    final shuffledList = List.of(answers);
+  List<QuizQuestion> getShuffledQuestions() {
+    dynamic shuffledList = List.of(questions);
     shuffledList.shuffle();
-
+    if (shuffledList.length > 5) {
+      shuffledList = shuffledList.sublist(0, 5);
+    }
     return shuffledList;
   }
 }
