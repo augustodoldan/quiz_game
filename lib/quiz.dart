@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_new/models/questions_random.dart';
 import 'package:quiz_new/questions_screen.dart';
 import 'package:quiz_new/start_widget.dart';
 import 'package:quiz_new/data/questions.dart';
@@ -15,6 +16,14 @@ class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   var activeScreen = "start-widget";
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      randomQuestions = QuestionsRandom(questions).getShuffledQuestions();
+      activeScreen = 'questions-screen';
+    });
+  }
+
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
@@ -24,7 +33,7 @@ class _QuizState extends State<Quiz> {
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
-    if (selectedAnswers.length == questions.length) {
+    if (selectedAnswers.length >= 5) {
       setState(() {
         activeScreen = "results-widget";
       });
@@ -42,17 +51,16 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'results-widget') {
-      screenWidget = ResultsScreen(
-        chosenList: selectedAnswers,
-      );
+      screenWidget =
+          ResultsScreen(chosenList: selectedAnswers, restartQuiz: restartQuiz);
     }
     return MaterialApp(
         home: Scaffold(
       body: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-          Colors.purple,
-          Color.fromARGB(255, 48, 3, 72),
+          Color.fromARGB(255, 4, 91, 191),
+          Color.fromARGB(255, 31, 132, 168),
         ])),
         child: screenWidget,
       ),

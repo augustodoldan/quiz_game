@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:quiz_new/answer_button.dart';
 import 'package:quiz_new/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_new/models/questions_random.dart';
+
+dynamic randomQuestions = QuestionsRandom(questions).getShuffledQuestions();
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({required this.onSelectAnswer, super.key});
@@ -19,12 +22,16 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     widget.onSelectAnswer(selectedAnswer);
     setState(() {
       currentQuestionIndex++;
+      if (currentQuestionIndex == 5) {
+        return;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentQuestions = questions[currentQuestionIndex];
+    final currentQuestions = randomQuestions[currentQuestionIndex];
+
     return SizedBox(
       width: double.infinity,
       child: Container(

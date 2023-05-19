@@ -17,6 +17,7 @@ class QuestionsSummary extends StatelessWidget {
         child: Column(
           children: summaryData!.map((answer) {
             bool answerOk = answer['correct_answer'] == answer['user_answer'];
+
             return Row(
               children: [
                 Container(
@@ -39,6 +40,7 @@ class QuestionsSummary extends StatelessWidget {
                 ),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         answer['question'].toString(),

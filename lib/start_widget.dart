@@ -21,9 +21,9 @@ class StartWidget extends StatelessWidget {
             height: 80,
           ),
           Text(
-            "Learn flutter the fun way!",
+            "🇦🇷✌️¿Que tán Peroncho sos?✌️ 🇦🇷",
             style: GoogleFonts.inconsolata(
-                color: const Color.fromARGB(255, 203, 163, 210), fontSize: 24),
+                color: const Color.fromARGB(255, 203, 163, 210), fontSize: 22),
           ),
           const SizedBox(
             height: 30,
