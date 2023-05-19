@@ -39,6 +39,7 @@ class QuestionsSummary extends StatelessWidget {
                 ),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         answer['question'].toString(),

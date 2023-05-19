@@ -19,12 +19,22 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     widget.onSelectAnswer(selectedAnswer);
     setState(() {
       currentQuestionIndex++;
+      if (currentQuestionIndex == 5) {
+        return;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentQuestions = questions[currentQuestionIndex];
+    dynamic randomQuestions = List.of(questions);
+    randomQuestions.shuffle();
+
+    if (randomQuestions.length > 5) {
+      randomQuestions = randomQuestions.sublist(0, 5);
+    }
+    final currentQuestions = randomQuestions[currentQuestionIndex];
+
     return SizedBox(
       width: double.infinity,
       child: Container(
